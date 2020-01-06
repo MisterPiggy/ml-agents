@@ -122,11 +122,17 @@ RUN apt-get update && apt-get -y upgrade
 # xvfb is used to do CPU based rendering of Unity
 RUN apt-get install -y xvfb
 
+# Install ml-agents-envs package locally
+COPY ml-agents-envs /ml-agents-envs
+WORKDIR /ml-agents-envs
+RUN pip install -e .
 
-ADD python/requirements.txt .
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
+# Install ml-agents package next
+COPY ml-agents /ml-agents
+WORKDIR /ml-agents
+RUN pip install -e .
 
-WORKDIR /execute
-COPY python /execute/python
+# port 5005 is the port used in in Editor training.
+EXPOSE 5005
 
-ENTRYPOINT ["python", "python/learn.py"]
+ENTRYPOINT ["mlagents-learn"]

@@ -7,12 +7,12 @@
 ## 安装 **Unity 2017.1** 或更高版本
 
 [下载](https://store.unity.com/download) 并安装 Unity。如果您想
-使用我们的 Docker 设置（稍后介绍），请确保在安装 Unity 时选择 
+使用我们的 Docker 设置（稍后介绍），请确保在安装 Unity 时选择
 _Linux Build Support_ 组件。
 
 <p align="center">
-    <img src="images/unity_linux_build_support.png" 
-        alt="Linux Build Support" 
+    <img src="images/unity_linux_build_support.png"
+        alt="Linux Build Support"
         width="500" border="10" />
 </p>
 
@@ -22,7 +22,7 @@ _Linux Build Support_ 组件。
 
     git clone git@github.com:Unity-Technologies/ml-agents.git
 
-此代码仓库中的 `unity-environment` 目录包含了要添加到项目中的 
+此代码仓库中的 `unity-environment` 目录包含了要添加到项目中的
 Unity Assets。`python` 目录包含训练代码。
 这两个目录都位于代码仓库的根目录。
 
@@ -40,7 +40,7 @@ Unity Assets。`python` 目录包含训练代码。
 
 ### Mac 和 Unix 用户
 
-如果您的 Python 环境不包括 `pip`，请参阅这些
+如果您的 Python 环境不包括 `pip3`，请参阅这些
 [说明](https://packaging.python.org/guides/installing-using-linux-tools/#installing-pip-setuptools-wheel-with-linux-package-managers)
 以了解其安装方法。
 
@@ -56,7 +56,7 @@ Unity Assets。`python` 目录包含训练代码。
 
 ## Unity 包
 
-您可以通过 Unity 包的形式下载TensorflowSharp 插件（[AWS S3链接](https://s3.amazonaws.com/unity-ml-agents/0.3/TFSharpPlugin.unitypackage)，[百度盘链接](https://pan.baidu.com/s/1s0mJN8lvuxTcYbs2kL2FqA)）
+您可以通过 Unity 包的形式下载TensorFlowSharp 插件 ([AWS S3链接](https://s3.amazonaws.com/unity-ml-agents/0.5/TFSharpPlugin.unitypackage)，[百度盘链接](https://pan.baidu.com/s/1s0mJN8lvuxTcYbs2kL2FqA))
 
 ## 帮助
 

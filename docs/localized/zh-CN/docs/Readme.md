@@ -1,4 +1,4 @@
-# Unity ML-Agents 文档
+# Unity ML-Agents 工具包文档
 
 ## 入门
  * [ML-Agents 概述*](ML-Agents-Overview.md)
@@ -20,7 +20,7 @@
  * [训练环境设计要点](/docs/Learning-Environment-Best-Practices.md)
  * [如何使用 Monitor 功能](/docs/Feature-Monitor.md)
  * [如何使用 TensorFlowSharp 插件（测试功能）](/docs/Using-TensorFlow-Sharp-in-Unity.md)
- 
+
 ## 进行训练
  * [如何用 ML-Agents 进行训练](/docs/Training-ML-Agents.md)
  * [Proximal Policy Optimization 训练要点](/docs/Training-PPO.md)
@@ -28,13 +28,15 @@
  * [Imitation Learning（模仿学习）训练要点](/docs/Training-Imitation-Learning.md)
  * [LSTM 训练要点](/docs/Feature-Memory.md)
  * [如何使用 Amazon Web Services 进行云端训练](/docs/Training-on-Amazon-Web-Service.md)
+ * [如何使用 Microsoft Azure 进行云端训练](/docs/Training-on-Microsoft-Azure.md)
  * [如何使用 TensorBoard 观察训练过程](/docs/Using-Tensorboard.md)
 
 ## 帮助
- * [如何从老版本升级到 ML-Agents v0.3](/docs/Migrating-v0.3.md)
+ * [如何从老版本升级到 ML-Agents v0.3](/docs/Migrating.md)
+ * [常见问题](/docs/FAQ.md)
  * [ML-Agents 术语表](/docs/Glossary.md)
- * [ML-Agents 尚未实现功能以及常见问题](/docs/Limitations-and-Common-Issues.md)
- 
+ * [ML-Agents 尚未实现功能](/docs/Limitations.md)
+
 ## API 文档
  * [API 参考](/docs/API-Reference.md)
  * [如何使用 Python API](/docs/Python-API.md)

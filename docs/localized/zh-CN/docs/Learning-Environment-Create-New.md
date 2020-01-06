@@ -160,7 +160,7 @@ agent 到达目标时会将自己标记为完成状态，而 agent 重置函数�
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RollerAgent : Agent 
+public class RollerAgent : Agent
 {
     Rigidbody rBody;
     void Start () {
@@ -171,14 +171,14 @@ public class RollerAgent : Agent
     public override void AgentReset()
     {
         if (this.transform.position.y < -1.0)
-        {  
+        {
             // agent 掉落
             this.transform.position = Vector3.zero;
             this.rBody.angularVelocity = Vector3.zero;
             this.rBody.velocity = Vector3.zero;
         }
         else
-        { 
+        {
             // 将目标移动到新的位置
             Target.position = new Vector3(Random.value * 8 - 4,
                                           0.5f,
@@ -235,17 +235,17 @@ public override void CollectObservations()
 {
     // 计算相对位置
     Vector3 relativePosition = Target.position - this.transform.position;
-    
+
     // 相对位置
     AddVectorObs(relativePosition.x/5);
     AddVectorObs(relativePosition.z/5);
-    
+
     // 与平台边缘的距离
     AddVectorObs((this.transform.position.x + 5)/5);
     AddVectorObs((this.transform.position.x - 5)/5);
     AddVectorObs((this.transform.position.z + 5)/5);
     AddVectorObs((this.transform.position.z - 5)/5);
-    
+
     // Agent 速度
     AddVectorObs(rBody.velocity.x/5);
     AddVectorObs(rBody.velocity.z/5);
@@ -256,7 +256,7 @@ Agent 代码的最后一部分是 Agent.AgentAction() 函数，此函数接收 B
 
 **动作**
 
-Brain 的决策以动作数组的形式传递给 `AgentAction()` 函数。此数组中的元素数量由 agent 的 Brain 的 `Vector Action Space Type` 和 `Vector Action Space Size` 设置确定。RollerAgent 使用连续向量运动空间，并需要 brain 提供的两个连续控制信号。因此，我们要将 Brain `Vector Action Size` 设置为 2。第一个元素 `action[0]` 确定沿 x 轴施加的力；`action[1]` 确定沿 z 轴施加的力。（如果我们允许 agent 以三维方式移动，那么我们需要将 `Vector Action Size` 设置为 3。）注意，Brain 并不知道动作数组中的值是什么意思。训练过程只是根据观测输入来调整动作值，然后看看会得到什么样的奖励。
+Brain 的决策以动作数组的形式传递给 `AgentAction()` 函数。此数组中的元素数量由 agent 的 Brain 的 `Vector Action Space Type` 和 `Vector Action Space Size` 设置确定。RollerAgent 使用连续向量运动空间，并需要 Brain 提供的两个连续控制信号。因此，我们要将 Brain `Vector Action Size` 设置为 2。第一个元素 `action[0]` 确定沿 x 轴施加的力；`action[1]` 确定沿 z 轴施加的力。（如果我们允许 agent 以三维方式移动，那么我们需要将 `Vector Action Size` 设置为 3。）注意，Brain 并不知道动作数组中的值是什么意思。训练过程只是根据观测输入来调整动作值，然后看看会得到什么样的奖励。
 
 RollerAgent 使用 `Rigidbody.AddForce` 函数将 action[] 数组中的值应用到其 Rigidbody 组件 `rBody`：
 
@@ -317,7 +317,7 @@ if (this.transform.position.y < -1.0)
 ```
 
 **AgentAction()**
- 
+
 利用上面列出的动作和奖励逻辑，`AgentAction()` 函数的最终版本如下所示：
 
 ```csharp
@@ -327,16 +327,16 @@ private float previousDistance = float.MaxValue;
 public override void AgentAction(float[] vectorAction, string textAction)
 {
     // 奖励
-    float distanceToTarget = Vector3.Distance(this.transform.position, 
+    float distanceToTarget = Vector3.Distance(this.transform.position,
                                               Target.position);
-    
+
     // 已到达目标
     if (distanceToTarget < 1.42f)
     {
         Done();
         AddReward(1.0f);
     }
-    
+
     // 进一步接近
     if (distanceToTarget < previousDistance)
     {
@@ -392,7 +392,7 @@ public override void AgentAction(float[] vectorAction, string textAction)
 
 1. 选择 Brain 游戏对象以便在 Inspector 中查看该对象的属性。
 2. 将 **Brain Type** 设置为 **Player**。
-3. 展开 **Continuous Player Actions**（仅在使用 **Player* brain 时可见）。
+3. 展开 **Continuous Player Actions**（仅在使用 **Player* Brain 时可见）。
 4. 将 **Size** 设置为 4。
 5. 设置以下映射：
 
@@ -407,9 +407,9 @@ public override void AgentAction(float[] vectorAction, string textAction)
 
 按 **Play** 运行场景，并用 WASD 键在平台上移动 agent。确保在 Unity Editor Console 窗口中没有显示任何错误，并且 agent 在到达目标或掉下平台时会重置。请注意，对于较复杂的调试，ML-Agents SDK 提供了一个方便的 Monitor 类，您可以使用该类轻松地在 Game 窗口中显示 agent 状态信息。
 
-您可以执行一个额外的测试是，首先使用 `python/Basics` 
+您可以执行一个额外的测试是，首先使用 `python/Basics`
 [Jupyter Notebook](/docs/Background-Jupyter.md)
-确保您的环境和 Python API 能正常工作。在 `Basics` 中，务必将 
+确保您的环境和 Python API 能正常工作。在 `Basics` 中，务必将
 `env_name` 设置为您生成的此环境对应的可执行文件的
 名称。
 
@@ -420,7 +420,7 @@ public override void AgentAction(float[] vectorAction, string textAction)
 本节简要回顾了在 Unity 环境中使用 Agent 时
 如何组织场景。
 
-您需要在场景中包含三种游戏对象才能使用 Unity ML-Agents：
+您需要在场景中包含三种游戏对象才能使用 Unity ML-Agents 工具包：
  * Academy
  * Brain
  * Agent
